@@ -1,0 +1,24 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .respName{
+    display: none;
+  }
+  @media(max-width: 960px) {
+    flex-wrap: wrap;
+    img{
+      display: none;
+    }
+    .respName{
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding-top: 20px;
+      img{
+        display: inline-block;
+        max-width: 100%;
+      }
+    }
+  }
+}

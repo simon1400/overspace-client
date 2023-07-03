@@ -1,0 +1,14 @@
+.slide{
+  padding-top: 50%;
+  img{
+    object-fit: cover;
+    object-position: center;
+  }
+  @media(max-width: 960px) {
+    padding-top: 100%;
+  }
+}
+
+.slider{
+  margin-bottom: 30px;
+}
