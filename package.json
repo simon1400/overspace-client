@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p 3007",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "pm2 deploy production"
   },
   "dependencies": {
     "@svgr/webpack": "^8.0.1",
