@@ -9,19 +9,17 @@ import "swiper/css/navigation";
 import styles from "./slider.module.scss";
 
 import Image from "next/image";
+import { FC } from "react";
 
-const Slider = () => {
+const APP_API = process.env.APP_API
+
+const Slider: FC<{data: any}> = ({data}) => {
+  console.log()
   return (
     <Swiper slidesPerView={1} navigation={true} modules={[Navigation]} className={styles.slider}>
-      <SwiperSlide className={styles.slide}>
-        <Image src="/card.png" fill alt="" />
-      </SwiperSlide>
-      <SwiperSlide className={styles.slide}>
-        <Image src="/card.png" fill alt="" />
-      </SwiperSlide>
-      <SwiperSlide className={styles.slide}>
-        <Image src="/card.png" fill alt="" />
-      </SwiperSlide>
+      {data.map((item: any, idx: number) => <SwiperSlide key={idx} className={styles.slide}>
+        <Image src={APP_API+item.attributes.url} fill alt="" />
+      </SwiperSlide>)}
     </Swiper>
   );
 };

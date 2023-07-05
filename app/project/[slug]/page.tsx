@@ -1,26 +1,58 @@
 import Container from '@/components/Container'
 import styles from './project.module.scss'
 import Slider from '@/components/Slider'
+import { client } from '@/lib/api';
+import { getProject, getProjectMeta } from '@/queries/projects';
+import { Metadata, NextPage, ResolvingMetadata } from 'next';
 
-const Project = () => {
+async function getData(slug: string) {
+  const { data } = await client.query({
+    query: getProject,
+    variables: {
+      slug
+    }
+  });
+
+  const project = data.projects.data[0].attributes;
+ 
+  return project
+}
+
+type Props = {
+  params: { slug: string }
+}
+ 
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+ 
+  const { data } = await client.query({
+    query: getProjectMeta,
+    variables: {
+      slug: params.slug
+    }
+  });
+
+  const meta = data.projects.data[0].attributes.meta
+ 
+  return {
+    title: meta.title + " | Overspace",
+    description: meta.description,
+  }
+}
+
+const Project: NextPage<{params: {slug: string}}> = async ({params: {slug}}) => {
+
+  const project = await getData(slug)
+
   return (
     <main className={styles.main}>
       <Container>
-        <Slider />
+        <Slider data={project.images.data} />
         <div className="content">
           <div>
-            <h1>RD TREBIC</h1>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, <a href="/">consectetuer</a> adipiscing elit. Nulla quis diam. Curabitur bibendum justo non orci. Nulla quis diam. Vivamus luctus egestas leo. Maecenas aliquet accumsan leo. Proin in tellus sit amet nibh dignissim sagittis. Nulla pulvinar eleifend sem. Pellentesque ipsum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Etiam commodo dui eget wisi. In dapibus augue non sapien. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo.
-                <ul>
-                  <li>sfdgfhdhff</li>
-                  <li>sfdgfhdhff</li>
-                  <li>sfdgfhdhff</li>
-                  <li>sfdgfhdhff</li>
-                </ul>
-              </p>
-            </div>
+            <h1>{project.title}</h1>
+            <div dangerouslySetInnerHTML={{__html: project.content}}/>
           </div>
           <div></div>
         </div>

@@ -7,7 +7,7 @@ import Link from "next/link";
 const Logo =  () => {
   return (
     <Link href="/" className={styles.logo}>
-      <Lottie animationData={logoAnimation} />
+      <Lottie loop={false} animationData={logoAnimation} />
     </Link>
   )
 }

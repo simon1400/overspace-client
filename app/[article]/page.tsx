@@ -1,15 +1,55 @@
 import Container from "@/components/Container"
+import { client } from "@/lib/api";
+import { getArticle, getArticleMeta } from "@/queries/article";
+import { Metadata, NextPage, ResolvingMetadata } from "next";
 
-const Article = () => {
+async function getData(slug: string) {
+  const { data } = await client.query({
+    query: getArticle,
+    variables: {
+      slug
+    }
+  });
+
+  const article = data.articles.data[0]?.attributes;
+ 
+  return article
+}
+
+type Props = {
+  params: { article: string }
+}
+
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+ 
+  const { data } = await client.query({
+    query: getArticleMeta,
+    variables: {
+      slug: params.article
+    }
+  });
+
+  const meta = data.articles.data[0].attributes.meta
+ 
+  return {
+    title: meta.title + " | Overspace",
+    description: meta.description,
+  }
+}
+
+const Article: NextPage<{params: {article: string}}> = async ({params: {article}}) => {
+
+  const data = await getData(article)
+
   return (
     <main>
       <Container>
         <div className="content">
           <div>
-            <h1>RD TREBIC</h1>
-            <div>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla quis diam. Curabitur bibendum justo non orci. Nulla quis diam. Vivamus luctus egestas leo. Maecenas aliquet accumsan leo. Proin in tellus sit amet nibh dignissim sagittis. Nulla pulvinar eleifend sem. Pellentesque ipsum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Etiam commodo dui eget wisi. In dapibus augue non sapien. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo.</p>
-            </div>
+            <h1>{data.title}</h1>
+            <div dangerouslySetInnerHTML={{__html: data.content}}/>
           </div>
           <div></div>
         </div>
