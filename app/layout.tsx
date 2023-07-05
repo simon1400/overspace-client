@@ -43,19 +43,27 @@ export const metadata = {
   generator: 'Next.js',
   applicationName: 'Overspace',
   referrer: 'origin-when-cross-origin',
-  keywords: ['Overspace', 'Architect'],
-  authors: [{ name: 'Dmytro Pechunka' }],
   colorScheme: 'light',
   creator: 'Dmytro Pechunka',
-  publisher: 'Dmytro Pechunka',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  metadataBase: new URL('https://overspace.cz'),
+  alternates: {
+    canonical: `https://overspace.cz/`,
   },
-  metadataBase: new URL('https://overspace.cz')
+  icons: {
+    icon: [
+      { url: '../favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '../favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: '../favicon/favicon.ico',
+    apple: '../favicon/apple-touch-icon.png',
+  },
+  manifest: '../favicon/site.manifest',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
 }
-
 
 export default async function RootLayout({
   children,

@@ -36,6 +36,9 @@ export async function generateMetadata(
   return {
     title: meta.title + " | Overspace",
     description: meta.description,
+    alternates: {
+      canonical: `https://overspace.cz/${params.article}`,
+    },
   }
 }
 
