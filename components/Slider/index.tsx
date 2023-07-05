@@ -18,7 +18,7 @@ const Slider: FC<{data: any}> = ({data}) => {
   return (
     <Swiper slidesPerView={1} navigation={true} modules={[Navigation]} className={styles.slider}>
       {data.map((item: any, idx: number) => <SwiperSlide key={idx} className={styles.slide}>
-        <Image src={APP_API+item.attributes.url} fill alt="" />
+        <Image src={APP_API+item.attributes.url+"?format=webp&width=1400"} fill alt="" />
       </SwiperSlide>)}
     </Swiper>
   );
