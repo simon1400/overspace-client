@@ -12,3 +12,24 @@
 .slider{
   margin-bottom: 30px;
 }
+
+.sliderWrap {
+  position: relative;
+  .sliderNav{
+    z-index: 999;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    width: 100%;
+    svg{
+      position: absolute;
+      cursor: pointer;
+      &:first-of-type{
+        left: 0;
+      }
+      &:last-of-type{
+        right: 0;
+      }
+    }
+  }
+}

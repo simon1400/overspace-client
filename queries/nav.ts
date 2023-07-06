@@ -9,6 +9,10 @@ const navQuery = gql`
             title
             link
           }
+          soc{
+            icon
+            link
+          }
         }
       }
     }

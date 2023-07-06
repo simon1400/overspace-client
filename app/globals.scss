@@ -53,7 +53,7 @@ body {
   h1{
     margin-bottom: 30px;
   }
-  h1, h2, h3, p{
+  h1, h2, h3, h4, p{
     font-size: 33px;
     line-height: 1.21;
     a{
@@ -130,6 +130,60 @@ a {
 .content{
   display: grid;
   grid-template-columns: 3fr 2fr;
+  ul{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    li{
+      position: relative;
+      padding-left: 50px;
+      list-style-type: none;
+      font-size: 33px;
+      line-height: 1.21;
+      &:before{
+        content: '';
+        display: block;
+        width: 35px;
+        background: black;
+        height: 1px;
+        left: 0;
+        top: 20px;
+        position: absolute;
+      }
+    }
+    @media(max-width: 960px) {
+      font-size: 19px;
+      ul{
+        li{
+          padding-left: 30px;
+          &:before{
+            width: 22px;
+            top: 10px;
+          }
+        }
+      }
+    }
+  }
+  ol {
+    padding-left: 0;
+    list-style: none;
+    counter-reset: item;
+    li {
+      list-style-type: none;
+      padding-left: 40px;
+      font-size: 14px;
+      position: relative;
+      font-size: 33px;
+      line-height: 1.21;
+      counter-increment: item;
+      &:before {
+        content: counter(item)".";
+        display: block;
+        position: absolute;
+        font-weight: 500;
+        left: 0;
+      }
+    }
+  }
   @media(max-width: 960px) {
     grid-template-columns: 1fr;
   }

@@ -29,19 +29,22 @@ const Mont = localFont({
   ],
 })
 
+export const revalidate = 2
+
 async function getData() {
   const { data } = await client.query({
     query: navQuery,
   });
 
-  const nav = data.nav.data.attributes.topNav;
+  const topNav = data.nav.data.attributes.topNav;
+  const soc = data.nav.data.attributes.soc;
  
-  return nav
+  return {topNav, soc}
 }
 
 export const metadata = {
   generator: 'Next.js',
-  applicationName: 'Overspace',
+  applicationName: 'Enev–Juráň Architekti',
   referrer: 'origin-when-cross-origin',
   colorScheme: 'light',
   creator: 'Dmytro Pechunka',
@@ -75,7 +78,7 @@ export default async function RootLayout({
   return (
     <html lang="cs">
       <body className={Mont.className}>
-        <Header data={nav} />
+        <Header topNav={nav.topNav} soc={nav.soc} />
         {children}
       </body>
     </html>

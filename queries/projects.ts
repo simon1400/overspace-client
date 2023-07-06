@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 const projectsQuery = gql`
   query Projects {
-    projects {
+    projects(sort: "rank:asc") {
       data {
         attributes {
           title

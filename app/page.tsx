@@ -16,7 +16,7 @@ async function getData() {
 
 
 export const metadata = {
-  title: 'Úvod | Overspace',
+  title: 'Úvod | Enev–Juráň Architekti',
   description: 'Úvod',
 }
 

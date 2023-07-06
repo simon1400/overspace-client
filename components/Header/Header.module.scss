@@ -7,7 +7,7 @@
   }
   @media(max-width: 960px) {
     flex-wrap: wrap;
-    img{
+    .textLogo{
       display: none;
     }
     .respName{
@@ -15,7 +15,7 @@
       width: 100%;
       text-align: center;
       padding-top: 20px;
-      img{
+      svg{
         display: inline-block;
         max-width: 100%;
       }
@@ -26,6 +26,11 @@
 .hamburger{
   z-index: 1100;
   position: relative;
+  >div{
+    >div > div{
+      height: 1px!important;
+    }
+  }
 }
 
 .nav{
@@ -71,12 +76,31 @@
           display: inline-block;
           &:after{
             content: '';
-            display: block;
+            display: none;
             width: 100%;
             height: 1px;
             background: white;
             bottom: 0;
             left: 0;
+          }
+        }
+        ul{
+          li{
+            display: inline-block;
+            &:not(:last-of-type) {
+              margin-right: 20px;
+            }
+            a{
+              svg{
+                opacity: .7;
+                transition: all .2s ease;
+              }
+              &:hover{
+                svg{
+                  opacity: 1;
+                }
+              }
+            }
           }
         }
       }

@@ -1,7 +1,7 @@
 import Container from "@/components/Container"
 import { client } from "@/lib/api";
 import { getArticle, getArticleMeta } from "@/queries/article";
-import { Metadata, NextPage, ResolvingMetadata } from "next";
+import { Metadata, NextPage } from "next";
 
 async function getData(slug: string) {
   const { data } = await client.query({
@@ -34,7 +34,7 @@ export async function generateMetadata(
   const meta = data.articles.data[0].attributes.meta
  
   return {
-    title: meta.title + " | Overspace",
+    title: meta.title + " | Enev–Juráň Architekti",
     description: meta.description,
     alternates: {
       canonical: `https://overspace.cz/${params.article}`,
