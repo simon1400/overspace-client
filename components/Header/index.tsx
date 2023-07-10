@@ -4,7 +4,6 @@ import Container from "../Container"
 import Logo from "../Logo"
 import styles from './Header.module.scss'
 import { Squash as Hamburger } from 'hamburger-react'
-import Image from "next/image"
 import Link from "next/link"
 import FBIcon from '/public/fb.svg'
 import InstaIcon from '/public/insta.svg'
@@ -42,7 +41,6 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
           </Container>
         </div>
         <div className={styles.respName}>
-          {/* <Image src="/textlogo.svg" width="360" height="33" alt="Text logo" /> */}
           <Link href="/"><TextLogo /></Link>
         </div>
       </header>

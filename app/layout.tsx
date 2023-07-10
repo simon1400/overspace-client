@@ -29,7 +29,7 @@ const Mont = localFont({
   ],
 })
 
-export const revalidate = 2
+export const revalidate = false
 
 async function getData() {
   const { data } = await client.query({
