@@ -49,25 +49,6 @@ const Homepage = async () => {
               />
             </div>
           })}
-          
-          {/* <div><Card circle /></div>
-          <div><Card big /></div>
-          <div></div>
-          <div><Card circle /></div>
-          <div><Card bigHeight/></div>
-          <div><Card circle/></div>
-          <div></div>
-          <div></div>
-          <div><Card /></div>
-          <div><Card /></div>
-          <div></div>
-          <div><Card big/></div>
-          <div><Card big/></div>
-          <div></div>
-          <div><Card circle/></div>
-          <div><Card /></div>
-          <div><Card circle/></div>
-          <div><Card big/></div> */}
         </div>
       </Container>
     </main>

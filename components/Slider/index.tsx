@@ -29,7 +29,7 @@ const Slider: FC<{ data: any }> = ({ data }) => {
         {data.map((item: any, idx: number) => (
           <SwiperSlide key={idx} className={styles.slide}>
             <Image
-              src={APP_API + item.attributes.url + "?format=webp&width=1400"}
+              src={APP_API + item.attributes.url + "?format=webp&width=1800"}
               fill
               alt=""
             />

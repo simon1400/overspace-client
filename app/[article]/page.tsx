@@ -34,8 +34,8 @@ export async function generateMetadata(
   const meta = data.articles.data[0].attributes.meta
  
   return {
-    title: meta.title + " | Enev–Juráň Architekti",
-    description: meta.description,
+    title: meta?.title + " | Enev–Juráň Architekti" || "",
+    description: meta?.description || "",
     alternates: {
       canonical: `https://overspace.cz/${params.article}`,
     },

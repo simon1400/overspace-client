@@ -8,10 +8,18 @@ import Link from "next/link"
 import FBIcon from '/public/fb.svg'
 import InstaIcon from '/public/insta.svg'
 import TextLogo from '/public/textlogo.svg'
+import { useRouter } from "next/navigation"
 
 const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
 
   const [isOpen, setOpen] = useState(false)
+  const router = useRouter()
+
+  const handleClick = (e: any, slug: string) => {
+    e.preventDefault()
+    router.push(slug)
+    setOpen(false)
+  }
 
   return (
     <Container>
@@ -25,7 +33,7 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
           <Container>
             <nav>
               <ul>
-                {topNav.map((item: any, idx: number) => <li key={idx}><Link href={item.link}>{item.title}</Link></li>)}
+                {topNav.map((item: any, idx: number) => <li key={idx}><Link href={item.link} onClick={e => handleClick(e, item.link)}>{item.title}</Link></li>)}
                 {!!soc.length && <li>
                   <ul>
                     {soc.map((item: any, idx: number) => <li key={idx}>

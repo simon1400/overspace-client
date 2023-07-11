@@ -152,13 +152,12 @@ a {
     }
     @media(max-width: 960px) {
       font-size: 19px;
-      ul{
-        li{
-          padding-left: 30px;
-          &:before{
-            width: 22px;
-            top: 10px;
-          }
+      li{
+        padding-left: 30px;
+        font-size: 19px;
+        &:before{
+          width: 22px;
+          top: 10px;
         }
       }
     }
@@ -181,6 +180,14 @@ a {
         position: absolute;
         font-weight: 500;
         left: 0;
+      }
+      
+    }
+    @media(max-width: 960px) {
+      font-size: 19px;
+      li{
+        padding-left: 30px;
+        font-size: 19px;
       }
     }
   }
