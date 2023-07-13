@@ -3,6 +3,8 @@ import styles from './page.module.scss'
 import Card from '@/components/Card'
 import projectsQuery from '@/queries/projects'
 import { client } from '@/lib/api'
+import { Metadata } from 'next'
+import { getHomepageMeta } from '@/queries/homepage'
 
 async function getData() {
   const { data } = await client.query({
@@ -14,10 +16,29 @@ async function getData() {
   return projects
 }
 
+type Props = {
+  params: { slug: string }
+}
+ 
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+ 
+  const { data } = await client.query({
+    query: getHomepageMeta
+  });
 
-export const metadata = {
-  title: 'Úvod | Enev–Juráň Architekti',
-  description: 'Úvod',
+  console.log(data)
+
+  const meta = data.homepage.data?.attributes.meta
+ 
+  return {
+    title: meta?.title + " | Enev–Juráň Architekti" || "",
+    description: meta?.description || "",
+    alternates: {
+      canonical: `https://enev-juran.com`,
+    },
+  }
 }
 
 const Homepage = async () => {

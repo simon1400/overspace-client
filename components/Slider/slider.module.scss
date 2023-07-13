@@ -18,12 +18,15 @@
   .sliderNav{
     z-index: 999;
     position: absolute;
-    transform: translateY(-50%);
     top: 50%;
     width: 100%;
     svg{
+      transform: translateY(-50%) scale(1);
       position: absolute;
       cursor: pointer;
+      @media(max-width: 960px) {
+        transform: translateY(-50%) scale(.7);
+      }
       &:first-of-type{
         left: 0;
       }

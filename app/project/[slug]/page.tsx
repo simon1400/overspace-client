@@ -42,7 +42,7 @@ export async function generateMetadata(
     title: meta?.title + " | Enev–Juráň Architekti" || "",
     description: meta?.description || "",
     alternates: {
-      canonical: `https://overspace.cz/project/${params.slug}`,
+      canonical: `https://enev-juran.com/project/${params.slug}`,
     },
   }
 }

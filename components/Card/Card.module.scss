@@ -25,6 +25,7 @@
     transition: all .5s ease;
     padding: 0 20px;
     opacity: 0;
+    text-align: center;
     > * {
       margin: auto;
       color: white;
@@ -32,6 +33,11 @@
       line-height: 1.21;
       font-weight: 300;
       text-transform: uppercase;
+    }
+    @media(max-width: 960px) {
+      > * {
+        font-size: 18px;
+      }
     }
   }
   &:hover{
