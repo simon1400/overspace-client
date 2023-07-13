@@ -3,7 +3,10 @@ import styles from './project.module.scss'
 import Slider from '@/components/Slider'
 import { client } from '@/lib/api';
 import { getProject, getProjectMeta } from '@/queries/projects';
-import { Metadata, NextPage, ResolvingMetadata } from 'next';
+import { Metadata, NextPage } from 'next';
+
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
 
 async function getData(slug: string) {
   const { data } = await client.query({
