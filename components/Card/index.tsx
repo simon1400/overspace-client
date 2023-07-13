@@ -24,7 +24,8 @@ const Card: FC<ICard> = ({
       <div className={styles.cardContent}>
         <h2>{data.title}</h2>
       </div>
-      <Image src={APP_API+data.images.data[0].attributes.url+"?format=webp&resize=460x460"} fill alt="" />
+      {/* <Image src={APP_API+data.images.data[0].attributes.url+"?format=webp&resize=460x460"} fill alt="" /> */}
+      <Image src={APP_API+data.images.data[0].attributes.url} fill alt="" />
     </Link>
   )
 }
