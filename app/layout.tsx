@@ -29,7 +29,8 @@ const Mont = localFont({
   ],
 })
 
-export const revalidate = false
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
 
 async function getData() {
   const { data } = await client.query({
@@ -48,9 +49,9 @@ export const metadata = {
   referrer: 'origin-when-cross-origin',
   colorScheme: 'light',
   creator: 'Dmytro Pechunka',
-  metadataBase: new URL('https://overspace.cz'),
+  metadataBase: new URL('https://enev-juran.com/'),
   alternates: {
-    canonical: `https://overspace.cz/`,
+    canonical: `https://enev-juran.com`,
   },
   icons: {
     icon: [

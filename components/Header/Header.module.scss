@@ -5,6 +5,9 @@
   .respName{
     display: none;
   }
+  .textLogo{
+    width: 360px;
+  }
   @media(max-width: 960px) {
     flex-wrap: wrap;
     .textLogo{

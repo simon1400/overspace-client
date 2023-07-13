@@ -7,7 +7,7 @@ import { Squash as Hamburger } from 'hamburger-react'
 import Link from "next/link"
 import FBIcon from '/public/fb.svg'
 import InstaIcon from '/public/insta.svg'
-import TextLogo from '/public/textlogo.svg'
+import TextLogo from '/public/enev-juran-logo.svg'
 import { useRouter } from "next/navigation"
 
 const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
