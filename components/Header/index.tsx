@@ -4,7 +4,6 @@ import Container from "../Container"
 import Logo from "../Logo"
 import styles from './Header.module.scss'
 import { Squash as Hamburger } from 'hamburger-react'
-import Link from "next/link"
 import FBIcon from '/public/fb.svg'
 import InstaIcon from '/public/insta.svg'
 import TextLogo from '/public/enev-juran-logo.svg'
@@ -25,7 +24,7 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
     <Container>
       <header className={styles.header}>
         <Logo />
-        <Link className={styles.textLogo} href="/"><TextLogo /></Link>
+        <a className={styles.textLogo} href="/"><TextLogo /></a>
         <div className={styles.hamburger}>
           <Hamburger color={isOpen ? "#fff" : "#000"} size={44} toggled={isOpen} toggle={setOpen} />
         </div>
@@ -33,7 +32,7 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
           <Container>
             <nav>
               <ul>
-                {topNav.map((item: any, idx: number) => <li key={idx}><Link href={item.link} onClick={e => handleClick(e, item.link)}>{item.title}</Link></li>)}
+                {topNav.map((item: any, idx: number) => <li key={idx}><a href={item.link} onClick={e => handleClick(e, item.link)}>{item.title}</a></li>)}
                 {!!soc.length && <li>
                   <ul>
                     {soc.map((item: any, idx: number) => <li key={idx}>
@@ -49,7 +48,7 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
           </Container>
         </div>
         <div className={styles.respName}>
-          <Link href="/"><TextLogo /></Link>
+          <a href="/"><TextLogo /></a>
         </div>
       </header>
     </Container>
