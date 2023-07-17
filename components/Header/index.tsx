@@ -8,6 +8,7 @@ import FBIcon from '/public/fb.svg'
 import InstaIcon from '/public/insta.svg'
 import TextLogo from '/public/enev-juran-logo.svg'
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
 
@@ -24,7 +25,7 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
     <Container>
       <header className={styles.header}>
         <Logo />
-        <a className={styles.textLogo} href="/"><TextLogo /></a>
+        <Link className={styles.textLogo} href="/"><TextLogo /></Link>
         <div className={styles.hamburger}>
           <Hamburger color={isOpen ? "#fff" : "#000"} size={44} toggled={isOpen} toggle={setOpen} />
         </div>
@@ -32,7 +33,7 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
           <Container>
             <nav>
               <ul>
-                {topNav.map((item: any, idx: number) => <li key={idx}><a href={item.link} onClick={e => handleClick(e, item.link)}>{item.title}</a></li>)}
+                {topNav.map((item: any, idx: number) => <li key={idx}><Link href={item.link} onClick={e => handleClick(e, item.link)}>{item.title}</Link></li>)}
                 {!!soc.length && <li>
                   <ul>
                     {soc.map((item: any, idx: number) => <li key={idx}>
@@ -48,7 +49,7 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
           </Container>
         </div>
         <div className={styles.respName}>
-          <a href="/"><TextLogo /></a>
+          <Link href="/"><TextLogo /></Link>
         </div>
       </header>
     </Container>
