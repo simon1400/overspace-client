@@ -5,6 +5,11 @@ import projectsQuery from '@/queries/projects'
 import { client } from '@/lib/api'
 import { Metadata } from 'next'
 import { getHomepageMeta } from '@/queries/homepage'
+import { PageWrapper } from './page-wrapper'
+import { Grid } from './Grid'
+
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
 
 async function getData() {
   const { data } = await client.query({
@@ -28,8 +33,6 @@ export async function generateMetadata(
     query: getHomepageMeta
   });
 
-  console.log(data)
-
   const meta = data.homepage.data?.attributes.meta
  
   return {
@@ -43,59 +46,62 @@ export async function generateMetadata(
 
 const Homepage = async () => {
   const projects = await getData()
+  console.log(projects.splice(14, 28))
   return (
-    <main className={styles.main}>
-      <Container>
-        <div className={styles.grid}>
-          {projects.splice(0, 14).map((item: any, idx: number) => {
-            if(idx === 3 || idx === 5 || idx === 6 || idx === 8 || idx === 10 || idx === 14) {
-              return <>
-                {idx !== 5 && <div key={idx+"-empty"}></div>}
-                <div key={idx}>
-                  <Card 
-                    data={item} 
-                    circle={idx === 3 || idx === 5 || idx === 10} 
-                    big={idx === 8}
-                  />
-                </div>
-                {idx === 5 && <div key={idx+"-empty"}></div>}
-              </>
-            }
-            return <div key={idx}>
-              <Card 
-                data={item} 
-                circle={idx === 1 || idx === 5 || idx === 13} 
-                big={idx === 2 || idx === 9 || idx === 14}
-                bigHeight={idx === 4}
-              />
-            </div>
-          })}
-          {projects.splice(14, 28).map((item: any, idx: number) => {
-            if(idx === 3 || idx === 5 || idx === 6 || idx === 8 || idx === 10 || idx === 14) {
-              return <>
-                {idx !== 5 && <div key={idx+"-empty"}></div>}
-                <div key={idx}>
-                  <Card 
-                    data={item} 
-                    circle={idx === 3 || idx === 5 || idx === 10} 
-                    big={idx === 8}
-                  />
-                </div>
-                {idx === 5 && <div key={idx+"-empty"}></div>}
-              </>
-            }
-            return <div key={idx}>
-              <Card 
-                data={item} 
-                circle={idx === 1 || idx === 5 || idx === 13} 
-                big={idx === 2 || idx === 9 || idx === 14}
-                bigHeight={idx === 4}
-              />
-            </div>
-          })}
-        </div>
-      </Container>
-    </main>
+    <PageWrapper>
+      <main className={styles.main}>
+        <Container>
+          <Grid>
+            {projects.splice(0, 14).map((item: any, idx: number) => {
+              if(idx === 3 || idx === 5 || idx === 6 || idx === 8 || idx === 10 || idx === 14) {
+                return <>
+                  {idx !== 5 && <div key={idx+"-empty"}></div>}
+                  <div key={idx}>
+                    <Card 
+                      data={item} 
+                      circle={idx === 3 || idx === 5 || idx === 10} 
+                      big={idx === 8}
+                    />
+                  </div>
+                  {idx === 5 && <div key={idx+"-empty"}></div>}
+                </>
+              }
+              return <div key={idx}>
+                <Card 
+                  data={item} 
+                  circle={idx === 1 || idx === 5 || idx === 13} 
+                  big={idx === 2 || idx === 9 || idx === 14}
+                  bigHeight={idx === 4}
+                />
+              </div>
+            })}
+            {projects.splice(14, 28).map((item: any, idx: number) => {
+              if(idx === 3 || idx === 5 || idx === 6 || idx === 8 || idx === 10 || idx === 14) {
+                return <>
+                  {idx !== 5 && <div key={idx+"-empty"}></div>}
+                  <div key={idx}>
+                    <Card 
+                      data={item} 
+                      circle={idx === 3 || idx === 5 || idx === 10} 
+                      big={idx === 8}
+                    />
+                  </div>
+                  {idx === 5 && <div key={idx+"-empty"}></div>}
+                </>
+              }
+              return <div key={idx}>
+                <Card 
+                  data={item} 
+                  circle={idx === 1 || idx === 5 || idx === 13} 
+                  big={idx === 2 || idx === 9 || idx === 14}
+                  bigHeight={idx === 4}
+                />
+              </div>
+            })}
+          </Grid>
+        </Container>
+      </main>
+    </PageWrapper>
   )
 }
 
