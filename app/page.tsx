@@ -54,7 +54,7 @@ const Homepage = async () => {
             {projects.splice(0, 14).map((item: any, idx: number) => {
               if(idx === 3 || idx === 5 || idx === 6 || idx === 8 || idx === 10 || idx === 14) {
                 return <>
-                  {idx !== 5 && <div key={idx+"-empty"}></div>}
+                  {idx !== 5 && <div key={idx+"-empty"} className={styles.empty}></div>}
                   <div key={idx}>
                     <Card 
                       data={item} 
@@ -62,7 +62,7 @@ const Homepage = async () => {
                       big={idx === 8}
                     />
                   </div>
-                  {idx === 5 && <div key={idx+"-empty"}></div>}
+                  {idx === 5 && <div key={idx+"-empty"} className={styles.empty}></div>}
                 </>
               }
               return <div key={idx}>
@@ -77,7 +77,7 @@ const Homepage = async () => {
             {projects.splice(14, 28).map((item: any, idx: number) => {
               if(idx === 3 || idx === 5 || idx === 6 || idx === 8 || idx === 10 || idx === 14) {
                 return <>
-                  {idx !== 5 && <div key={idx+"-empty"}></div>}
+                  {idx !== 5 && <div key={idx+"-empty"} className={styles.empty}></div>}
                   <div key={idx}>
                     <Card 
                       data={item} 
@@ -85,7 +85,7 @@ const Homepage = async () => {
                       big={idx === 8}
                     />
                   </div>
-                  {idx === 5 && <div key={idx+"-empty"}></div>}
+                  {idx === 5 && <div key={idx+"-empty"} className={styles.empty}></div>}
                 </>
               }
               return <div key={idx}>

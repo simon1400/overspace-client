@@ -17,7 +17,7 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
 
   const handleClick = (e: any, slug: string) => {
     e.preventDefault()
-    router.push(slug)
+    window.location.href = slug
     setOpen(false)
   }
 
@@ -33,7 +33,7 @@ const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
           <Container>
             <nav>
               <ul>
-                {topNav.map((item: any, idx: number) => <li key={idx}><Link href={item.link} onClick={e => handleClick(e, item.link)}>{item.title}</Link></li>)}
+                {topNav.map((item: any, idx: number) => <li key={idx}><a href={item.link} onClick={e => handleClick(e, item.link)}>{item.title}</a></li>)}
                 {!!soc.length && <li>
                   <ul>
                     {soc.map((item: any, idx: number) => <li key={idx}>
