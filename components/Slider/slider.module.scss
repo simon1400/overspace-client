@@ -1,8 +1,12 @@
 .slide{
-  height: 100vh;
+  height: 90vh;
   img{
     object-fit: cover;
     object-position: center;
+  }
+  @media(max-width: 960px) {
+    height: auto;
+    padding-top: 100%;
   }
 }
 

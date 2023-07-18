@@ -14,20 +14,6 @@ const variants = {
   },
 };
 
-const images = {
-  hidden: {
-    opacity: 0,
-    x: 30,
-  },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 1
-    },
-  },
-};
-
 export const Grid: FC<{children: ReactElement[]}> = ({ children }) => (
   <motion.div 
     variants={variants}

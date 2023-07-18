@@ -46,7 +46,6 @@ export async function generateMetadata(
 
 const Homepage = async () => {
   const projects = await getData()
-  console.log(projects.splice(14, 28))
   return (
     <PageWrapper>
       <main className={styles.main}>
