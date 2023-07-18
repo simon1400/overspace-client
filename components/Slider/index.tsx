@@ -21,6 +21,7 @@ const Slider: FC<{ data: any }> = ({ data }) => {
       <Swiper
         slidesPerView={1}
         navigation={true}
+        // autoHeight={true}
         modules={[Navigation]}
         // @ts-ignore
         navigation={{ nextEl: "#swiper-forward", prevEl: "#swiper-back" }}

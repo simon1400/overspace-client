@@ -7,13 +7,11 @@ import { Squash as Hamburger } from 'hamburger-react'
 import FBIcon from '/public/fb.svg'
 import InstaIcon from '/public/insta.svg'
 import TextLogo from '/public/enev-juran-logo.svg'
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 const Header: FC<{topNav: any; soc: any}> = ({topNav, soc}) => {
 
   const [isOpen, setOpen] = useState(false)
-  const router = useRouter()
 
   const handleClick = (e: any, slug: string) => {
     e.preventDefault()

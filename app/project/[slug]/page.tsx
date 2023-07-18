@@ -16,7 +16,7 @@ async function getData(slug: string) {
     }
   });
 
-  const project = data.projects.data[0].attributes;
+  const project = data.projects.data[0]?.attributes;
  
   return project
 }
@@ -36,7 +36,7 @@ export async function generateMetadata(
     }
   });
 
-  const meta = data.projects.data[0].attributes.meta
+  const meta = data.projects.data[0]?.attributes.meta
  
   return {
     title: meta?.title + " | Enev–Juráň Architekti" || "",
