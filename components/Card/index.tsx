@@ -16,7 +16,7 @@ const projectAnimation = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 1
+      duration: 0.5
     },
   },
 };
@@ -34,14 +34,14 @@ const Card: FC<ICard> = ({
   bigHeight = false,
   data
 }) => {
+  let format = data.images.data[0].attributes.url.indexOf('.gif') >= 0 ? "?resize=460x460" : "?format=webp&resize=460x460"
   return (
     <motion.div variants={projectAnimation}>
       <Link href={`/project/${data.slug}`} className={`${styles.card} ${big ? styles.big : ""} ${circle ? styles.circle : ""} ${bigHeight ? styles.bigHeight : ""}`}>
         <div className={styles.cardContent}>
           <h2>{data.title}</h2>
         </div>
-        <Image src={APP_API+data.images.data[0].attributes.url+"?format=webp&resize=460x460"} fill alt="" />
-        {/* <Image src={APP_API+data.images.data[0].attributes.url} fill alt="" /> */}
+        <Image src={APP_API+data.images.data[0].attributes.url+format} fill alt="" />
       </Link>
     </motion.div>
   )

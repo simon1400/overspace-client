@@ -15,7 +15,7 @@ import { FC } from "react";
 const APP_API = process.env.APP_API;
 
 const Slider: FC<{ data: any }> = ({ data }) => {
-  console.log();
+  
   return (
     <div className={styles.sliderWrap}>
       <Swiper
@@ -26,16 +26,20 @@ const Slider: FC<{ data: any }> = ({ data }) => {
         navigation={{ nextEl: "#swiper-forward", prevEl: "#swiper-back" }}
         className={styles.slider}
       >
-        {data.map((item: any, idx: number) => (
-          <SwiperSlide key={idx} className={styles.slide}>
-            <Image
-              src={APP_API + item.attributes.url + "?format=webp&width=1800"}
-              // src={APP_API + item.attributes.url}
-              fill
-              alt=""
-            />
-          </SwiperSlide>
-        ))}
+        {data.map((item: any, idx: number) => {
+
+          let format = item.attributes.url.indexOf('.gif') >= 0 ? "?width=1800" : "?format=webp&width=1800"
+          
+          return (
+            <SwiperSlide key={idx} className={styles.slide}>
+              <Image
+                src={APP_API + item.attributes.url + format}
+                fill
+                alt=""
+              />
+            </SwiperSlide>
+          )
+        })}
       </Swiper>
       <div className={styles.sliderNav}>
         <ArrowL id="swiper-back" aria-label="swiper-back" />
