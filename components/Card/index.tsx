@@ -7,14 +7,14 @@ import { motion } from "framer-motion";
 
 const APP_API = process.env.APP_API
 
-const images = {
+const projectAnimation = {
   hidden: {
     opacity: 0,
-    x: 30,
+    y: 30,
   },
   show: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: {
       duration: 1
     },
@@ -35,7 +35,7 @@ const Card: FC<ICard> = ({
   data
 }) => {
   return (
-    <motion.div variants={images}>
+    <motion.div variants={projectAnimation}>
       <Link href={`/project/${data.slug}`} className={`${styles.card} ${big ? styles.big : ""} ${circle ? styles.circle : ""} ${bigHeight ? styles.bigHeight : ""}`}>
         <div className={styles.cardContent}>
           <h2>{data.title}</h2>
