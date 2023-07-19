@@ -46,12 +46,39 @@ export async function generateMetadata(
 
 const Homepage = async () => {
   const projects = await getData()
+
+  // console.log(projects.splice(14, 28))
   return (
     <PageWrapper>
       <main className={styles.main}>
         <Container>
           <Grid>
-            {projects.splice(0, 14).map((item: any, idx: number) => {
+            {projects.map((item: any, idx: number) => {
+              if(idx === 3 || idx === 5 || idx === 6 || idx === 8 || idx === 10 || idx === 14 || 
+                idx === 17 || idx === 19 || idx === 20 || idx === 22 || idx === 24 || idx === 28) {
+                return <>
+                  {idx !== 5 && idx !== 19 && <div key={idx+"-empty"} className={styles.empty}></div>}
+                  <div key={idx}>
+                    <Card 
+                      data={item} 
+                      circle={idx === 3 || idx === 5 || idx === 10 || idx === 17 || idx === 19 || idx === 24} 
+                      big={idx === 8 || idx === 22}
+                    />
+                  </div>
+                  {(idx === 5 || idx === 19) && <div key={idx+"-empty"} className={styles.empty}></div>}
+                </>
+              }
+              return <div key={idx}>
+                <Card 
+                  data={item} 
+                  circle={idx === 1 || idx === 12 || idx === 15 || idx === 26} 
+                  big={idx === 2 || idx === 9 || idx === 13 || idx === 16 || idx === 23 || idx === 27}
+                  bigHeight={idx === 4 || idx === 18}
+                />
+              </div>
+            })}
+            {/* {projects.splice(14, 28).map((item: any, idx: number) => {
+              console.log("_________________________________")
               if(idx === 3 || idx === 5 || idx === 6 || idx === 8 || idx === 10 || idx === 14) {
                 return <>
                   {idx !== 5 && <div key={idx+"-empty"} className={styles.empty}></div>}
@@ -73,30 +100,7 @@ const Homepage = async () => {
                   bigHeight={idx === 4}
                 />
               </div>
-            })}
-            {projects.splice(14, 28).map((item: any, idx: number) => {
-              if(idx === 3 || idx === 5 || idx === 6 || idx === 8 || idx === 10 || idx === 14) {
-                return <>
-                  {idx !== 5 && <div key={idx+"-empty"} className={styles.empty}></div>}
-                  <div key={idx}>
-                    <Card 
-                      data={item} 
-                      circle={idx === 3 || idx === 5 || idx === 10} 
-                      big={idx === 8}
-                    />
-                  </div>
-                  {idx === 5 && <div key={idx+"-empty"} className={styles.empty}></div>}
-                </>
-              }
-              return <div key={idx}>
-                <Card 
-                  data={item} 
-                  circle={idx === 1 || idx === 5 || idx === 13} 
-                  big={idx === 2 || idx === 9 || idx === 14}
-                  bigHeight={idx === 4}
-                />
-              </div>
-            })}
+            })} */}
           </Grid>
         </Container>
       </main>
