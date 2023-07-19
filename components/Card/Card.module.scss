@@ -50,9 +50,15 @@
   }
   &.big{
     padding-top: 50%;
+    @media(max-width: 960px) {
+      padding-top: 100%;
+    }
   }
   &.bigHeight{
     padding-top: 200%;
+    @media(max-width: 960px) {
+      padding-top: 100%;
+    }
   }
   &.circle{
     border-radius: 50%;
